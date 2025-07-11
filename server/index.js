@@ -13,18 +13,26 @@ console.log("MONGO_URI:", process.env.MONGO_URI);
 
 const app = express();
 const server = http.createServer(app); // Create HTTP server for socket.io
-const io = new Server(server, {
+const io = new Server(httpServer, {
   cors: {
-    origin: '*', // You can restrict this to your frontend origin in production
-  },
+    origin: 'https://job-importer-8wbhmry13-gshivanshu5s-projects.vercel.app/',
+    methods: ['GET', 'POST'],
+    credentials: true
+  }
 });
+
 
 global.io = io; // ✅ Make io globally accessible to worker or controllers
 
 const PORT = process.env.PORT || 5000;
 
 // Middleware
-app.use(cors());
+app.use(cors({
+ origin: [
+    'http://localhost:3000',
+    'https://job-importer-8wbhmry13-gshivanshu5s-projects.vercel.app/',
+  ],  credentials: true,
+}));
 app.use(express.json());
 
 // Routes
