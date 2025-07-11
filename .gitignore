@@ -1,0 +1,9 @@
+# Frontend (client)
+client/node_modules
+client/.next
+client/.env
+
+# Backend (server)
+server/node_modules
+server/.env
+
