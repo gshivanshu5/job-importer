@@ -59,7 +59,7 @@ export default function Dashboard() {
   const handleImport = async () => {
     try {
       setImporting(true);
-      const res = await fetch('/api/import-jobs', {
+      const res = await fetch(`${process.env.NEXT_PUBLIC_BACKEND_URL}/api/import-jobs`, {
         method: 'POST',
       });
 

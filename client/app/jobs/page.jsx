@@ -13,7 +13,7 @@ export default function JobsPage() {
 
   useEffect(() => {
     setLoading(true);
-    fetch(`/api/jobs?page=${currentPage}&limit=${jobsPerPage}`)
+    fetch(`${process.env.NEXT_PUBLIC_BACKEND_URL}/api/jobs?page=${currentPage}&limit=${jobsPerPage}`)
       .then(res => res.json())
       .then(data => {
         setJobs(data.jobs || []);
